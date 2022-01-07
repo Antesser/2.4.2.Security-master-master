@@ -2,50 +2,52 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
-    <title>Пользователи</title>
+    <title>All Users</title>
 </head>
 <body>
-<form th:action="@{/logout}" method="post">
-    <input type="submit" value="Logout"/>
-</form>
 <div>
-    <h2>Пользователи</h2>
+    <h2>Users</h2>
     <table class="table table-striped table-bordered"
            style="border-spacing: 50px;text-align-all: center; vertical-align: middle">
         <thead>
         <tr>
-            <th>#</th>
-            <th>Логин</th>
-            <th>Имя</th>
-            <th>Фамилия</th>
-            <th>Возраст</th>
-            <th>Пароль</th>
-            <th>Роль</th>
+            <th>№</th>
+            <th>Username</th>
+            <th>Password</th>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>Age</th>
+            <th>Role</th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="user :${users}">
             <td th:text="${user.getId()}"></td>
             <td th:text="${user.getMyUsername()}"></td>
+            <td th:text="${user.getPassword()}"></td>
             <td th:text="${user.getName()}"></td>
             <td th:text="${user.getLastName()}"></td>
             <td th:text="${user.getAge()}"></td>
-            <td th:text="${user.getPassword()}"></td>
             <td th:text="${user.getRoles()}"></td>
 
             <td>
-                <form th:method="DELETE" th:action="@{/admin/delete/{id}(id=${user.id})}">
-                    <input type="submit" value="Удалить"/>
-                </form>
                 <form method="get" th:action="@{/admin/updateUser/{id}(id=${user.id})}">
-                    <input type="submit" value="Обновить">
+                    <input type="submit" value="Update">
+                </form>
+                <br>
+                <form th:method="DELETE" th:action="@{/admin/delete/{id}(id=${user.id})}">
+                    <input type="submit" value="Delete"/>
                 </form>
             </td>
         </tr>
         </tbody>
     </table>
     <hr>
-    <a type="submit" th:href="@{/admin/newUser}">Создать Пользователя</a>
+    <a type="submit" th:href="@{/admin/newUser}">Create new user</a>
 </div>
+<br>
+<form th:action="@{/logout}" method="post">
+    <input type="submit" value="Logout"/>
+</form>
 </body>
 </html>
