@@ -16,7 +16,6 @@ import java.util.Set;
 @RequestMapping("/admin")
 public class AdminController {
 
-
     private final UserService userService;
     private final RoleService roleService;
 
@@ -38,7 +37,6 @@ public class AdminController {
         return "newUser";
     }
 
-
     @PostMapping("/newUser")
     public String createUser(@ModelAttribute("user") User user) {
         Role role1;
@@ -52,7 +50,6 @@ public class AdminController {
         return "redirect:/admin/users";
     }
 
-
     @GetMapping("/updateUser/{id}")
     public String updateUser(@PathVariable("id") Long id, Model model) {
         model.addAttribute("user", userService.findById(id));
@@ -61,7 +58,7 @@ public class AdminController {
     }
 
     @PostMapping("/updateUser/{id}")
-    public String update(@ModelAttribute("user")User user ) {
+    public String update(@ModelAttribute("user") User user) {
 
         Set<Role> roleSet = new HashSet<>();
         for (Role role : user.getRoles()) {
@@ -75,11 +72,9 @@ public class AdminController {
         return "redirect:/admin/users";
     }
 
-    @DeleteMapping( "/delete/{id}")
+    @DeleteMapping("/delete/{id}")
     public String deleteUser(@PathVariable("id") Long id) {
         userService.deleteUser(id);
         return "redirect:/admin/users";
     }
-
-
 }

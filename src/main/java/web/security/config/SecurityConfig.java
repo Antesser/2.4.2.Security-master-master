@@ -18,7 +18,6 @@ import web.security.config.handler.LoginSuccessHandler;
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-
     private final UserDetailsService userDetailsService;
     private final LoginSuccessHandler loginSuccessHandler;
 
@@ -29,9 +28,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Override
-    public void configure(AuthenticationManagerBuilder auth)  {
+    public void configure(AuthenticationManagerBuilder auth) {
         auth.authenticationProvider(authenticationProvider());
-
 
     }
 

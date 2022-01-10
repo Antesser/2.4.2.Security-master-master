@@ -15,17 +15,17 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     private final UserDao userDao;
 
     @Autowired
-    public UserDetailsServiceImpl( UserDao userDao) {
+    public UserDetailsServiceImpl(UserDao userDao) {
         this.userDao = userDao;
     }
 
     @Transactional
     @Override
     public UserDetails loadUserByUsername(String name) throws UsernameNotFoundException {
-       web.security.model.User user = userDao.findByUserName(name);
-       if(user == null){
-           throw  new UsernameNotFoundException("User name is null");
-       }
+        web.security.model.User user = userDao.findByUserName(name);
+        if (user == null) {
+            throw new UsernameNotFoundException("User name is null");
+        }
         return new User(user.getUsername(), user.getPassword(), user.getAuthorities());
     }
 }

@@ -6,7 +6,6 @@ import java.util.List;
 
 public interface UserDao {
 
-
     void saveNewUser(User user);
 
     List<User> getUsersList();
@@ -18,7 +17,4 @@ public interface UserDao {
     void deleteUser(Long id);
 
     User findByUserName(String username);
-
-
-
 }
