@@ -7,6 +7,7 @@ import web.security.dao.RoleDao;
 import web.security.model.Role;
 
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class RoleServiceImp implements RoleService {
@@ -34,6 +35,12 @@ public class RoleServiceImp implements RoleService {
     @Override
     public Role findRoleByRoleName(String RoleName) {
         return roleDao.findRoleByRoleName(RoleName);
+    }
+
+    @Transactional
+    @Override
+    public Set<Role> getSetOfRoles(String[] roleName) {
+        return roleDao.getSetOfRoles(roleName);
     }
 
 

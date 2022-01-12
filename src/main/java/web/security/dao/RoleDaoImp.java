@@ -6,7 +6,9 @@ import web.security.model.Role;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Repository
 public class RoleDaoImp implements RoleDao {
@@ -23,7 +25,6 @@ public class RoleDaoImp implements RoleDao {
         manager.persist(role);
     }
 
-
     @Override
     public List<Role> getAllRoles() {
         return manager.createQuery(" select  r from Role r", Role.class).getResultList();
@@ -34,5 +35,13 @@ public class RoleDaoImp implements RoleDao {
         TypedQuery<Role> query = manager.createQuery("select r from Role r  where  r.name=:paramName", Role.class);
         query.setParameter("paramName", RoleName);
         return query.getResultList().stream().findAny().orElse(null);
+    }
+    @Override
+    public Set<Role> getSetOfRoles(String[] roleName) {
+        Set<Role> roleSet = new HashSet<>();
+        for (String role : roleName) {
+            roleSet.add(findRoleByRoleName(role));
+        }
+        return roleSet;
     }
 }

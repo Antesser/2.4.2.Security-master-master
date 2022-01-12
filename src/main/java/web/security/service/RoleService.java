@@ -3,6 +3,7 @@ package web.security.service;
 import web.security.model.Role;
 
 import java.util.List;
+import java.util.Set;
 
 public interface RoleService {
 
@@ -11,5 +12,7 @@ public interface RoleService {
     List<Role> getAllRoles();
 
     Role findRoleByRoleName(String RoleName);
+
+    Set<Role> getSetOfRoles(String[] roleName);
 
 }

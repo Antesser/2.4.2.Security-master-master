@@ -38,15 +38,19 @@ public class AdminController {
     }
 
     @PostMapping("/newUser")
-    public String createUser(@ModelAttribute("user") User user) {
-        Role role1;
-        Set<Role> roleSet = new HashSet<>();
-        for (Role role : user.getRoles()) {
-            role1 = roleService.findRoleByRoleName(role.getName());
-            roleSet.add(role1);
-        }
-        user.setRoles(roleSet);
+    public String createUser(@ModelAttribute("user") User user,
+                         @RequestParam("roles") String[] nameRole) {
+        user.setRoles(roleService.getSetOfRoles(nameRole));
         userService.saveNewUser(user);
+//    public String createUser(@ModelAttribute("user") User user) {
+//        Role role1;
+//        Set<Role> roleSet = new HashSet<>();
+//        for (Role role : user.getRoles()) {
+//            role1 = roleService.findRoleByRoleName(role.getName());
+//            roleSet.add(role1);
+//        }
+//        user.setRoles(roleSet);
+//        userService.saveNewUser(user);
         return "redirect:/admin/users";
     }
 

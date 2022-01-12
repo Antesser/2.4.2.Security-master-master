@@ -1,4 +1,4 @@
-package web.security.config;
+package web.security.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -12,7 +12,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
-import web.security.config.handler.LoginSuccessHandler;
+import web.security.security.handler.LoginSuccessHandler;
 
 @Configuration
 @EnableWebSecurity
