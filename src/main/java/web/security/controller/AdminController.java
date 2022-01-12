@@ -62,17 +62,10 @@ public class AdminController {
     }
 
     @PostMapping("/updateUser/{id}")
-    public String update(@ModelAttribute("user") User user) {
-
-        Set<Role> roleSet = new HashSet<>();
-        for (Role role : user.getRoles()) {
-            Role role2 = roleService.findRoleByRoleName(role.getName());
-            roleSet.add(role2);
-        }
-        user.setRoles(roleSet);
-
+    public String update(@ModelAttribute("user") User user,
+                         @RequestParam("roles") String[] nameRole) {
+        user.setRoles(roleService.getSetOfRoles(nameRole));
         userService.updateUser(user);
-
         return "redirect:/admin/users";
     }
 
