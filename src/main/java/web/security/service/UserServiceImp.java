@@ -42,9 +42,9 @@ public class UserServiceImp implements UserService {
 
     @Transactional
     @Override
-    public void updateUser(User toBeUpdated) {
-        toBeUpdated.setPassword(bcryptPasswordEncoder.encode(toBeUpdated.getPassword()));
-        userDao.updateUser(toBeUpdated);
+    public void updateUser(User user) {
+      //  user.setPassword(bcryptPasswordEncoder.encode(user.getPassword()));
+        userDao.updateUser(user);
     }
 
     @Transactional

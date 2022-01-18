@@ -35,16 +35,8 @@ public class UserDaoImp implements UserDao {
 
 
     @Override
-    public void updateUser(User toBeUpdated) {
-        toBeUpdated.setId(toBeUpdated.getId());
-        toBeUpdated.setUsername(toBeUpdated.getMyUsername());
-        toBeUpdated.setPassword(toBeUpdated.getPassword());
-        toBeUpdated.setName(toBeUpdated.getName());
-        toBeUpdated.setLastName(toBeUpdated.getLastName());
-        toBeUpdated.setAge(toBeUpdated.getAge());
-        toBeUpdated.setRoles(toBeUpdated.getRoles());
-
-        entityManager.merge(toBeUpdated);
+    public void updateUser(User user) {
+        entityManager.merge(user);
     }
 
 
@@ -60,6 +52,5 @@ public class UserDaoImp implements UserDao {
         q.setParameter("ParamUsername", username);
         return q.getResultList().stream().findAny().orElse(null);
     }
-
 
 }
