@@ -36,20 +36,20 @@ public class UserServiceImp implements UserService {
 
     @Transactional
     @Override
-    public User findById(Long id) {
+    public User findById(long id) {
         return userDao.findById(id);
     }
 
     @Transactional
     @Override
     public void updateUser(User user) {
-      //  user.setPassword(bcryptPasswordEncoder.encode(user.getPassword()));
+      user.setPassword(bcryptPasswordEncoder.encode(user.getPassword()));
         userDao.updateUser(user);
     }
 
     @Transactional
     @Override
-    public void deleteUser(Long id) {
+    public void deleteUser(long id) {
         userDao.deleteUser(id);
     }
 

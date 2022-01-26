@@ -112,6 +112,12 @@
             <artifactId>slf4j-simple</artifactId>
             <version>1.7.32</version>
         </dependency>
+        <dependency>
+            <groupId>org.exist-db</groupId>
+            <artifactId>exist-persistentlogin</artifactId>
+            <version>5.3.1</version>
+            <scope>compile</scope>
+        </dependency>
     </dependencies>
     <build>
         <finalName>Task_2.4.2</finalName>
