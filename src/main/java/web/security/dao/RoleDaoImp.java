@@ -13,7 +13,7 @@ import java.util.Set;
 @Repository
 public class RoleDaoImp implements RoleDao {
 
-    @PersistenceContext
+    @PersistenceContext//предназаначена для автоматического связывания менеджера сущностей с бином.
     private EntityManager manager;
 
 
